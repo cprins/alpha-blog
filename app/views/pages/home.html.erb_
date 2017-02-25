@@ -1,0 +1,45 @@
+<html>
+	<head>
+
+          <style type="text/css">
+            body{
+            background:url(/assets/bandera.jpg);
+            background-size: 100% 100%;
+            background-repeat: repeat-y;}
+         .articulo{
+             column-count:5;
+             -webkit-column-count:5;
+             -moz-column-count:5;
+             column-gap:10px;
+             -webkit-column-gap:10px;
+             -moz-column-gap:10px;
+             column-rule: 3px solid black;
+             -webkit-column-rule: 3px solid black;}
+          .polig{ 
+background-color: white;
+} 
+          </style>
+          
+         <h1 ALIGN=center>Bienvenidos a mi pagina web</h1>
+         <div class="polig"> CONTENIDO . . . </div> 
+         <div align="center">
+             <%= image_tag "salto_angel.jpg"%>
+         </div>
+         <br>
+         </br>
+	</head>
+	<body>
+       <font color="white">
+       <div class="articulo">
+          Lorem ipsum dolor sit amet, consectetur adipiscing 	elit. Fusce maximus nibh nec nisl faucibus vehicula. Sed a 	ornare ex, iaculis interdum ex. Nam vitae dignissim nibh. 	Aenean bibendum viverra lacinia. Donec tincidunt ex quis 	euismod scelerisque. Nunc vulputate arcu efficitur risus 	auctor, a lacinia justo sagittis. Phasellus neque sapien, 	interdum vitae magna et, facilisis vulputate eros. Etiam 	dignissim neque quis magna efficitur sodales. Nam tincidunt 	libero non purus sodales, a dapibus sem cursus. Interdum et 	malesuada fames ac ante ipsum primis in faucibus. Aliquam 	purus turpis, mattis eu imperdiet faucibus, varius quis 	nibh. Maecenas sodales vehicula eros et malesuada. Vivamus a 	tempus mauris. Phasellus ultricies risus in magna vehicula, 	a ullamcorper enim varius. Sed vel magna nec massa dictum 	bibendum ut in torto
+	</div>
+      <br>
+      </br>
+
+        
+        <footer>
+          Creado por Cesar Prins en el 2017
+        </footer>
+       </font>
+	</body>
+</html>
