@@ -1,0 +1,15 @@
+<h1>Crear un articulo</h1>
+
+<%= form_for @articulo do |f|  %>
+  <p>
+  <!-- <%= f.label :title    %>   colocal la etiqueta con el nombre del campo -->
+  <%= f.label "Titulo"  %> <br/>
+  <%= f.text_field :title    %>
+  </p>
+  <p>
+  <%= f.label "Descripción"  %> <br/>
+  <%= f.text_area :description    %>
+  </p>
+  <%= f.submit "Crear artículo" %>
+
+<% end %>
