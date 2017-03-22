@@ -1,0 +1,36 @@
+<% if @articulo.errors.any? %>
+
+  <% if parametros[:parametro1] == 'edit' %>
+    <h3>Los siguientes errores previenen la modificacion del artículo</h3> 
+  <% elsif parametros[:parametro1] == 'new' %>
+    <h3>Los siguientes errores previenen la creación del artículo</h3>
+  <% end %>
+  <ul>
+  <% @articulo.errors.full_messages.each do |msg| %>
+  <li> <%= msg %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @articulo do |f|  %>
+  <p>
+  <!-- <%= f.label :title    %>   colocal la etiqueta con el nombre del campo -->
+  <%= f.label "Titulo"  %> <br/>
+  <%= f.text_field :title    %>
+  </p>
+  <p>
+  <%= f.label "Descripción"  %> <br/>
+  <%= f.text_area :description    %>
+  </p>
+  <% if parametros[:parametro1] == 'edit' %>
+    <%= f.submit "Modificar artículo" %> 
+  <% elsif parametros[:parametro1] == 'new' %>
+    <%= f.submit "Crear artículo" %> 
+  <% else %>
+    <%= f.submit %>
+  <% end %>
+  <p>
+  <%= link_to "Regresar a la lista de articulos" , articles_path %> 
+  </p>
+
+<% end %>

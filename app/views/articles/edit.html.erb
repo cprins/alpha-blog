@@ -1,27 +1,4 @@
 <h1>Editando un articulo</h1>
-<% if @articulo.errors.any? %>
-<h3>Los siguientes errores previenen la modificacion del artículo</h3>
-<ul>
-  <% @articulo.errors.full_messages.each do |msg| %>
-  <li> <%= msg %></li>
-  <% end %>
-</ul>
-<% end %>
 
-<%= form_for @articulo do |f|  %>
-  <p>
-  <!-- <%= f.label :title    %>   colocal la etiqueta con el nombre del campo -->
-  <%= f.label "Titulo"  %> <br/>
-  <%= f.text_field :title    %>
-  </p>
-  <p>
-  <%= f.label "Descripción"  %> <br/>
-  <%= f.text_area :description    %>
-  </p>
-  <%= f.submit "Modificar artículo" %>
-  
-  <p>
-  <%= link_to "Regresar a la lista de articulos" , articles_path %> 
-  </p>
-
-<% end %>
+<!-- render llama a el archivo indicado, aqui lo usamos para reutilizar codigo -->
+<%= render 'form', :parametros => {:parametro1 => 'edit' }  %>
