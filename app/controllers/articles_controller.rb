@@ -1,5 +1,8 @@
 class ArticlesController < ApplicationController
   
+  # para que ejecute el procedimiento set_articulo en cada uno de los procedimientos indicados para no repetir codigo
+  before_action :set_articulo, only: [:edit,:update,:show,:destroy]
+  
   def index
     # variable de entorno para listar todos los articulos
     @articulos = Article.all
@@ -22,24 +25,18 @@ class ArticlesController < ApplicationController
   end 
   
   def show
-    @articulo = Article.find(params[:id])
-    @article = Article.find(params[:id])
   end
   
   def destroy
-    @articulo = Article.find(params[:id])  
     @articulo.destroy
     flash[:notice] = "El articulo fue eliminado satisfactoriamente"
     redirect_to articles_path(@articulo)
   end
   
   def edit
-    @articulo = Article.find(params[:id])
   end
   
   def update
-    
-    @articulo = Article.find(params[:id])
     if @articulo.update(article_params)
       flash[:notice] = "El articulo fue modificado satisfactoriamente"
       redirect_to article_path(@articulo)
@@ -50,6 +47,10 @@ class ArticlesController < ApplicationController
   
  
   private
+  
+  def set_articulo
+    @articulo = Article.find(params[:id])
+  end
   
   def article_params
     # son los parametros del modelo creado, actua como un record
