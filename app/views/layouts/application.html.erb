@@ -8,9 +8,15 @@
 </head>
 <body>
   
+<%= render 'layouts/navegacion' %>  
 <%= render 'layouts/mensajes' %>
 
-<%= yield %>
+<!-- el container coloca una especie de marco en lo que este deonto del div -->
+<div class="container">
+  <%= yield %>
+</div>
+
+<%= render 'layouts/piepagina' %>
 
 </body>
 </html>
