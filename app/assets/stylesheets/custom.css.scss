@@ -14,8 +14,8 @@ $navbar-default-bg: black;
   font-weight: bold;
 }
 
-#logo.hover {
-  color: #fff;
+#logo:hover {
+  color: white;
   text-decoration: none;
 }
 
@@ -68,6 +68,24 @@ $navbar-default-bg: black;
   float: left;
   margin-left: 15px;
 }
+
+
+/*para el efecto del boton de registro*/
+#prueba:hover {
+box-shadow: 0px 0px 25px white;
+-webkit-box-shadow: 0px 0px 25px white;
+-webkit-transform:scale(1.1,1.1);
+opacity:2;
+transform:scale(1.1,1.1);
+border: 1px solid black;
+}
+
+#prueba{
+transition: opacity 1s, box-shadow 1s, transform 1s, background 1s;
+-webkit-transition: opacity 1s, -webkit-box-shadow 1s, -webkit-transform 1s, background 1s, color 1s;
+}
+
+
 
 
 

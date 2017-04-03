@@ -12,25 +12,42 @@
   </ul>
 <% end %>
 
-<%= form_for @articulo do |f|  %>
-  <p>
-  <!-- <%= f.label :title    %>   colocal la etiqueta con el nombre del campo -->
-  <%= f.label "Titulo"  %> <br/>
-  <%= f.text_field :title    %>
-  </p>
-  <p>
-  <%= f.label "Descripción"  %> <br/>
-  <%= f.text_area :description    %>
-  </p>
-  <% if parametros[:parametro1] == 'edit' %>
-    <%= f.submit "Modificar artículo" %> 
-  <% elsif parametros[:parametro1] == 'new' %>
-    <%= f.submit "Crear artículo" %> 
-  <% else %>
-    <%= f.submit %>
-  <% end %>
-  <p>
-  <%= link_to "Regresar a la lista de articulos" , articles_path %> 
-  </p>
-
-<% end %>
+<div class='row'>
+  <div class='col-xs-12'> 
+    <!--  los parametros, como las clases, se pasan en un hash -->
+    <%= form_for(@articulo, :html => {class: "form-horizontal", role: "form"}) do |f|  %>
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <!--  <%= f.label :title    %>   coloca la etiqueta con el nombre del campo -->
+          <%= f.label "Titulo"  %>
+        </div> 
+        <div class="col-sm-8">
+          <%= f.text_field :title, class: "form-control", placeholder: "Titulo del articulo", autofocus: true %>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label "Descripción"  %> <br/>
+        </div>
+        <div class="col-sm-8">
+          <%= f.text_area :description, class: "form-control", rows: 10, placeholder: "Cuerpo del articulo" %>
+        </div>
+      </div>
+        
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">  
+          <% if parametros[:parametro1] == 'edit' %>
+            <%= f.submit "Modificar artículo", class: 'btn btn-primary btn-lg' %> 
+          <% elsif parametros[:parametro1] == 'new' %>
+            <%= f.submit "Crear artículo", class: 'btn btn-primary btn-lg' %> 
+          <% else %>
+            <%= f.submit class: 'btn btn-primary btn-lg' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div class="col-xs-4 col-xs-offset-4">
+      [<%= link_to "Regresar a la lista de articulos" , articles_path %>] 
+    </div>
+  </div>
+</div>
