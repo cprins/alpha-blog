@@ -1,0 +1,25 @@
+<% if @articulo.errors.any? %>
+  <div class="row">
+    <div class= "col-xs-8 col-xs-offset-2">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h2 class="panel-title">
+            <b><%= @articulo.errors.count %></b>
+            <% if parametros[:parametro1] == 'edit' %>
+              <b>error/es previenen la modificacion del artículo</b>
+            <% elsif parametros[:parametro1] == 'new' %>
+              <b>error/es previenen la creación del artículo</b>
+            <% end %>
+          </h2>
+          <div class="panel-body">
+            <ul>
+              <% @articulo.errors.full_messages.each do |msg| %>
+                <li> <%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

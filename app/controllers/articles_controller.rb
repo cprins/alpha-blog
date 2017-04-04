@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     # render plain: params[:article].inspect  #:article es el nombre del modelo creado, no el nombre de la variable de entorno
     @articulo = Article.new(article_params)
     if @articulo.save
-      flash[:notice] = "El articulo fue creado satisfactoriamente"
+      flash[:success] = "El articulo fue creado satisfactoriamente"
       redirect_to article_path(@articulo)
     else
       render 'new'
@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
   
   def destroy
     @articulo.destroy
-    flash[:notice] = "El articulo fue eliminado satisfactoriamente"
+    flash[:danger] = "El articulo fue eliminado satisfactoriamente"
     redirect_to articles_path(@articulo)
   end
   
@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
   
   def update
     if @articulo.update(article_params)
-      flash[:notice] = "El articulo fue modificado satisfactoriamente"
+      flash[:success] = "El articulo fue modificado satisfactoriamente"
       redirect_to article_path(@articulo)
     else
       render 'edit'
