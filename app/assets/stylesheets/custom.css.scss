@@ -29,6 +29,27 @@ $navbar-default-bg: black;
   height: 550px;
 }
 
+.article-actions {
+  border-top: 1px solid #eaeaea;
+  padding-top: 5px;
+
+}
+
+.articulo-titulo {
+  font-weight: bold ;
+  font-size: 1.5em;
+}
+
+.articulo-cuerpo {
+  border-top: 1px solid #eaeaea;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.descripcion {
+  margin-top: 0cm;
+}
+
 .jumbotron h1 {
   color: #fff;
   text-align: center;
