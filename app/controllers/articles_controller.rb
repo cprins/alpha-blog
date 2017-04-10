@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
   def create
     # render plain: params[:article].inspect  #:article es el nombre del modelo creado, no el nombre de la variable de entorno
     @articulo = Article.new(article_params)
+    @articulo.user = User.first
     if @articulo.save
       flash[:success] = "El articulo fue creado satisfactoriamente"
       redirect_to article_path(@articulo)
