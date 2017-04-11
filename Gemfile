@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 
+# para la gema de password
+gem 'bcrypt', '~> 3.1.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3.5'
