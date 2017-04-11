@@ -1,10 +1,10 @@
-<% if @articulo.errors.any? %>
+<% if obj.errors.any? %>
   <div class="row">
     <div class= "col-xs-8 col-xs-offset-2">
       <div class="panel panel-danger">
         <div class="panel-heading">
           <h2 class="panel-title">
-            <b><%= @articulo.errors.count %></b>
+            <b><%= obj.errors.count %></b>
             <% if parametros[:parametro1] == 'edit' %>
               <b>error/es previenen la modificacion del artículo</b>
             <% elsif parametros[:parametro1] == 'new' %>
@@ -13,7 +13,7 @@
           </h2>
           <div class="panel-body">
             <ul>
-              <% @articulo.errors.full_messages.each do |msg| %>
+              <% obj.errors.full_messages.each do |msg| %>
                 <li> <%= msg %></li>
               <% end %>
             </ul>

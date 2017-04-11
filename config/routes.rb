@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   
   resources :articles #crea todas las rutas CRUD de la tabla articles
+  
+  
+  get 'signup', to: 'users#new'
+ # post 'users', to: 'users#create' si quieres crear el users_path por separado
+  resources :users, except: [:new]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
