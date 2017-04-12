@@ -6,9 +6,9 @@
           <h2 class="panel-title">
             <b><%= obj.errors.count %></b>
             <% if parametros[:parametro1] == 'edit' %>
-              <b>error/es previenen la modificacion del artículo</b>
+              <b>error/es previene/n la modificacion <%= parametros[:objeto] %> </b>
             <% elsif parametros[:parametro1] == 'new' %>
-              <b>error/es previenen la creación del artículo</b>
+              <b>error/es previene/n la creación <%= parametros[:objeto] %> </b>
             <% end %>
           </h2>
           <div class="panel-body">

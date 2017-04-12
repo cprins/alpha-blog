@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+    
+  # para que ejecute el procedimiento set_articulo en cada uno de los procedimientos indicados para no repetir codigo
+  before_action :set_usuario, only: [:edit,:update]
+  
   def new
     @usuario = User.new
   end
@@ -13,7 +17,23 @@ class UsersController < ApplicationController
     end
   end 
   
+  def edit
+  end
+  
+  def update
+    if @usuario.update(user_params)
+      flash[:success] = "Tu cuenta ha sido actualizada satisfactoriamente"
+      redirect_to articles_path
+    else
+      render 'edit'
+    end
+  end
+  
   private
+  
+  def set_usuario
+    @usuario = User.find(params[:id])
+  end
   
   def user_params
     # son los parametros del modelo creado, actua como un record
