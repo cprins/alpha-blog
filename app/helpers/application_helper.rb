@@ -31,6 +31,13 @@ module ApplicationHelper
 
      end
   end
+   # el default del size es 80
+  def gravatar_for(usuario, options = { size: 80})
+    gravatar_id = Digest::MD5::hexdigest(usuario.email.downcase)
+    size = options[:size]
+    gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
+    image_tag(gravatar_url, alt: usuario.username, class: "img-circle")
+  end
   
 end
 
