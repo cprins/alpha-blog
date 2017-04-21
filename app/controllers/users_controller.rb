@@ -3,6 +3,12 @@ class UsersController < ApplicationController
   # para que ejecute el procedimiento set_articulo en cada uno de los procedimientos indicados para no repetir codigo
   before_action :set_usuario, only: [:edit,:update]
   
+  def index
+    # variable de entorno para listar todos los usuarios
+    @usuarios = User.all
+  end
+  
+  
   def new
     @usuario = User.new
   end
