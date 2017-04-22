@@ -1,27 +1,9 @@
 <h1 align= "center">Listado de articulos</h1>
 
-<% @articulos.each do |articulo| %>
-  <div class= "row">
-    <div class="col-xs-8 col-xs-offset-2">
-      <div class="well well-lg">
-        <div class="articulo-titulo">
-          <%= link_to articulo.title, article_path(articulo) %> 
-        </div>
-        <div class="articulo-cuerpo">
-          <%= truncate(articulo.description, length: 100) %>
-          <div class= "article-meta-details">
-            <small> Creado por: <%= articulo.user.username if articulo.user %>, hace
-                                <%= time_ago_in_words(articulo.created_at) %>,
-                                modificado por ultima vez hace: <%= time_ago_in_words(articulo.updated_at) %> </small>
-          </div>
-        </div>  
-        <div class="article-actions">
-          <%= link_to "Editar este articulo" , edit_article_path(articulo), class: "btn btn-xs btn-primary" %> 
-          <%= link_to "Eliminar este articulo" , article_path(articulo), method: :delete, 
-                                                  data: {confirm: "¿Estas seguro que deseas borrar el articulo?"},
-                                                 class: "btn btn-xs btn-danger"%>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
+<div align="center">
+  <%= will_paginate %>
+</div>
+<%= render 'article', obj: @articles %>
+<div align="center">
+  <%= will_paginate %>
+</div>

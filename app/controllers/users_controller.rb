@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   def index
     # variable de entorno para listar todos los usuarios
-    @usuarios = User.all
+    @users = User.paginate(page: params[:page], per_page: 5)
   end
   
   
@@ -37,6 +37,7 @@ class UsersController < ApplicationController
   
   def show
     @usuario = User.find(params[:id])
+    @usuario_articulos = @usuario.articles.paginate(page: params[:page], per_page: 5)
   end
   
   private

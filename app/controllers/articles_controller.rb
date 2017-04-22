@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   
   def index
     # variable de entorno para listar todos los articulos
-    @articulos = Article.all
+    @articles = Article.paginate(page: params[:page], per_page: 5)
   end
   
   def new
