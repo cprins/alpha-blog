@@ -1,7 +1,10 @@
 class ArticlesController < ApplicationController
   
   # para que ejecute el procedimiento set_articulo en cada uno de los procedimientos indicados para no repetir codigo
+  # los before action se ejecutan en el orden que los colocas
   before_action :set_articulo, only: [:edit,:update,:show,:destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   
   def index
     # variable de entorno para listar todos los articulos
@@ -15,7 +18,7 @@ class ArticlesController < ApplicationController
   def create
     # render plain: params[:article].inspect  #:article es el nombre del modelo creado, no el nombre de la variable de entorno
     @articulo = Article.new(article_params)
-    @articulo.user = User.first
+    @articulo.user =  current_user #User.find(session[:user_id])
     if @articulo.save
       flash[:success] = "El articulo fue creado satisfactoriamente"
       redirect_to article_path(@articulo)
@@ -58,5 +61,10 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title,:description)
   end
   
-
+  def require_same_user
+    if current_user != @articulo.user
+      flash[:danger] = "Solo puedes editar o borrar tus propios artículos"
+      redirect_to root_path
+    end
+  end
 end

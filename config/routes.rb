@@ -8,8 +8,12 @@ Rails.application.routes.draw do
  # get 'pages/home', to: 'pages#home' (controlador#accion)
  # get 'pages/about', to: 'pages#about'
  
- root 'pages#home'  
+  root 'pages#home'  
   get 'about', to: 'pages#about'
+  # creacion de la ruta para el login
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
   
   resources :articles #crea todas las rutas CRUD de la tabla articles
   

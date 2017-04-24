@@ -20,10 +20,12 @@
   <hr>
   <%= simple_format(@articulo.description) %>
   <div class="article-actions">
-    <%= link_to "Editar este articulo" , edit_article_path(@articulo), class: "btn btn-xs btn-primary" %> 
-    <%= link_to "Eliminar este articulo" , article_path(@articulo), method: :delete, 
-                             data: {confirm: "¿Estas seguro que deseas borrar el articulo?"},
-                             class: "btn btn-xs btn-danger"%>
+    <% if logged_in? && current_user == @articulo.user %>
+      <%= link_to "Editar este articulo" , edit_article_path(@articulo), class: "btn btn-xs btn-primary" %> 
+      <%= link_to "Eliminar este articulo" , article_path(@articulo), method: :delete, 
+                               data: {confirm: "¿Estas seguro que deseas borrar el articulo?"},
+                               class: "btn btn-xs btn-danger"%>
+    <% end %>
     <%= link_to "Ver todos los articulos" , articles_path, class: "btn btn-xs btn-success"  %> 
 
   </div>

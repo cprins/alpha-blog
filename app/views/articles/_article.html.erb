@@ -13,12 +13,15 @@
                                 modificado por ultima vez hace: <%= time_ago_in_words(articulo.updated_at) %> </small>
           </div>
         </div>  
-        <div class="article-actions">
-          <%= link_to "Editar este articulo" , edit_article_path(articulo), class: "btn btn-xs btn-primary" %> 
-          <%= link_to "Eliminar este articulo" , article_path(articulo), method: :delete, 
-                                                  data: {confirm: "¿Estas seguro que deseas borrar el articulo?"},
-                                                 class: "btn btn-xs btn-danger"%>
-        </div>
+        <!--  para que permita editar y eliminar solo los articulos del usuario conectado -->
+        <% if logged_in? && current_user == articulo.user %>
+          <div class="article-actions">
+            <%= link_to "Editar este articulo" , edit_article_path(articulo), class: "btn btn-xs btn-primary" %> 
+            <%= link_to "Eliminar este articulo" , article_path(articulo), method: :delete, 
+                                                    data: {confirm: "¿Estas seguro que deseas borrar el articulo?"},
+                                                   class: "btn btn-xs btn-danger"%>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
