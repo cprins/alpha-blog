@@ -2,7 +2,8 @@ class UsersController < ApplicationController
     
   # para que ejecute el procedimiento set_articulo al inicio en cada uno de los procedimientos indicados para no repetir codigo
   before_action :set_usuario, only: [:edit,:update,:show]
-  before_action :require_same_user, only: [:edit,:update]
+  before_action :require_same_user, only: [:edit,:update,:destroy]
+  before_action :require_admin, only: [:destroy]
   
   def index
     # variable de entorno para listar todos los usuarios
@@ -41,6 +42,13 @@ class UsersController < ApplicationController
     @usuario_articulos = @usuario.articles.paginate(page: params[:page], per_page: 5)
   end
   
+  def destroy
+    @usuario = User.find(params[:id])  
+    @usuario.destroy
+    flash[:danger] = "El usuario y los artículos creados por el usuario han sido eliminados"
+    redirect_to users_path
+  end 
+  
   private
   
   def set_usuario
@@ -53,8 +61,15 @@ class UsersController < ApplicationController
   end
   
   def require_same_user
-    if current_user != @usuario
+    if current_user != @usuario and !current_user.admin?
       flash[:danger] = "Solo puedes editar tu propia cuenta"
+      redirect_to root_path
+    end
+  end
+  
+  def require_admin
+    if logged_in? and !current_user.admin?
+      flash[:danger] = "Solo usuarios administradores pueden realizar esta acción"
       redirect_to root_path
     end
   end

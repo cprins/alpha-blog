@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many    :articles
+  # dependent: :destroy  es para borrar en cascada todos los articulos cuando se elimine el usuario
+  has_many    :articles, dependent: :destroy  
   before_save {self.email = email.downcase}
   validates   :username, presence: true, 
               uniqueness: {case_sensitive: false}, 
