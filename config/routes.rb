@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   resources :articles #crea todas las rutas CRUD de la tabla articles
+  resources :categories, except: [:destroy]
   
   
   get 'signup', to: 'users#new'
