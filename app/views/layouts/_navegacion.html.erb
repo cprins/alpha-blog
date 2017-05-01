@@ -18,7 +18,8 @@
         <li> <%= link_to "Usuarios", users_path %></li>
         <% if logged_in? %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acciones <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Acciones <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li> <%= link_to "Crear artículo" , new_article_path %> </li>
               <li><a href="#">Another action</a></li>
@@ -30,6 +31,23 @@
             </ul>
           </li>
         <% end %>
+      
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Categorías <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li> <%= link_to "Todas las categorías" , categories_path %> </li>
+            <li role="separator" class="divider"></li>
+            <% Category.all.each do |categoria| %>
+            <li><%= link_to "#{categoria.name}", category_path(categoria) %></li>
+            <% end %>
+            <% if logged_in? and current_user.admin? %>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Nueva categoría", new_category_path %></li>
+            <% end %>
+          </ul>
+        </li>
+      
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">

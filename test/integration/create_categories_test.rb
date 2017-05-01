@@ -1,8 +1,15 @@
 require 'test_helper'
 
 class CreateCategoriesTest < ActionDispatch::IntegrationTest
+  
+  def setup 
+    @usuario = User.create(username: "john", email: "john@example.com", password: "password", 
+                           admin: true)
+  end
    
   test "obtener la forma new category y create category"  do 
+    # se pasa el password literal ya que cuando se crea el usuario, codifica ese password
+    sig_in_as(@usuario, "password")
     # que el path este creado
     get new_category_path
     #  que el template este creado
@@ -20,6 +27,7 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
   
   # test para verificar que existaq el fallo cuando se intenta registrar una categoria sin nombre
   test "La presentación de una categoría no válida resulta en un fallo"  do 
+    sig_in_as(@usuario, "password")
     get new_category_path
     assert_template 'categories/new'
     assert_no_difference 'Category.count' do 
