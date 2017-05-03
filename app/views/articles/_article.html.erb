@@ -13,6 +13,10 @@
                                 modificado por ultima vez hace: <%= time_ago_in_words(articulo.updated_at) %> </small>
           </div>
         </div>  
+        <% if articulo.categories.any? %>
+          <p>Categorias: <%= render articulo.categories %></p>
+        <% end %>
+        
         <!--  para que permita editar y eliminar solo los articulos del usuario conectado -->
         <% if logged_in? && (current_user == articulo.user || current_user.admin?) %>
           <div class="article-actions">

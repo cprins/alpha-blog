@@ -19,6 +19,10 @@
   <h4 class="center descripcion"> <strong>Descripcion: </strong></h4> 
   <hr>
   <%= simple_format(@articulo.description) %>
+  <% if @articulo.categories.any? %>
+    <!-- para para el parcial categories/_category (hace un bucle del objeto) --> 
+    <p>Categorias: <%= render @articulo.categories %></p>
+  <% end %>
   <div class="article-actions">
     <% if logged_in? && (current_user == @articulo.user || current_user.admin?) %>
       <%= link_to "Editar este articulo" , edit_article_path(@articulo), class: "btn btn-xs btn-primary" %> 

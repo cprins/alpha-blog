@@ -58,7 +58,7 @@ class ArticlesController < ApplicationController
   
   def article_params
     # son los parametros del modelo creado, actua como un record
-    params.require(:article).permit(:title,:description)
+    params.require(:article).permit(:title,:description, category_ids: [])
   end
   
   def require_same_user
